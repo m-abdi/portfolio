@@ -1,91 +1,106 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Image from 'next/image';
+import TypewriterEffect from './components/TypewriterEffect/TypewriterEffect';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <main>
+      <div
+        className='transition-[background-color] hover:bg-[whitesmoke] border-[1px] rounded-[50%] bg-[white] w-[80px] h-[80px] flex flex-col items-center justify-center shadow-xl border-solid sticky top-3 mx-auto z-10'
+        style={{ transitionTimingFunction: 'ease-out' }}
+      >
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={'/images/M.svg'}
+          width={40}
+          height={40}
+          className='object-contain'
+          alt='Logo'
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+      </div>
+      {/* hero text and image */}
+      <div className='flex flex-col-reverse md:flex-row h-[100vh] items-center justify-center gap-6 text-center py-0 px-[5%]'>
+        <section className='flex flex-col items-center justify-center gap-4'>
+          <Image
+            src={'/images/Mehdi-Abdi.png'}
+            width={410}
+            height={410}
+            className='object-contain rounded-[50%] w-[70vw] h-[70vw] sm:w-[410px] sm:h-[410px]'
+            alt=''
+          />
+          <h1 className='text-[calc(1.3rem+3vw)] md:text-[50px] font-bold'>
+            Hi, I'm Mehdi Abdi
+          </h1>
+          <section className='text-[calc(1.3rem+3vw)] md:text-[50px] uppercase font-bold flex flex-row flex-wrap items-center gap-4 w-full text-center justify-center'>
+            <TypewriterEffect className='text-[calc(1.1rem+2.8vw)] md:text-[40px] font-extrabold text-center'>
+              <h2>full-stack engineer</h2>
+            </TypewriterEffect>
+          </section>
+          {/* social links */}
+          <section className='flex flex-row justify-start items-center gap-4'>
+            <a
+              href='mailto:m.abdi.public@gmail.com'
+              target={'_blank'}
+              referrerPolicy='no-referrer'
+              aria-label='email address'
+            >
+              <Image
+                src={'/images/gmail.png'}
+                width={30}
+                height={30}
+                alt='gmail logo'
+              />
+            </a>
+            <a
+              href='https://www.linkedin.com/in/mehdi-abdi-b12443203'
+              target={'_blank'}
+              referrerPolicy='no-referrer'
+              aria-label='linkedin account'
+            >
+              <Image
+                src={'/images/linkedin.png'}
+                width={30}
+                height={30}
+                alt='linkedin logo'
+              />
+            </a>
+            <a
+              href='https://github.com/m-abdi/'
+              target={'_blank'}
+              referrerPolicy='no-referrer'
+              aria-label='github account'
+            >
+              <Image
+                src={'/images/github.png'}
+                width={30}
+                height={30}
+                alt='github logo'
+              />
+            </a>
+          </section>
+          <p className='min-w-[300px] max-w-[900px]'>
+            Passionate software engineer with experience in both startup and
+            stable business environments. I offer honesty, fair pricing,
+            and quality work.
+          </p>
+          <button className='bg-[var(--color-primary)] min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl'>
+            Download cv (PDF, XX MB)
+          </button>
+        </section>
+      </div>
+      {/* articles */}
+      {/* <article className='bg-[var(--color-secondary)] min-h-[200px] text-[var(--light-text)] px-[5%]'>
+        <h2 className='text-[40px]'>Articles</h2>
+        <section>
+          <div className='shadow-2xl w-[280px] h-[310px] rounded-xl bg-[var(--card-background)]'></div>
+        </section>
+      </article> */}
+      <section>
+        <div
+          className='transition-[background-color] hover:bg-[#ffffff] border-[1px] object-contain rounded-[50%] bg-[whitesmoke] w-[50px] h-[50px] flex flex-col items-center justify-center shadow-xl border-solid z-10'
+          style={{ transitionTimingFunction: 'ease-out' }}
+        >
+          <Image src={'/images/django.svg'} width={50} height={50} alt='Logo' />
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </section>
     </main>
-  )
+  );
 }

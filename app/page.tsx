@@ -131,9 +131,14 @@ export default function Home() {
             stable business environments. I offer honesty, fair pricing, and
             quality work.
           </p>
-          <button className='bg-[var(--color-primary)] min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl'>
-            Download cv (PDF, XX MB)
-          </button>
+          <a
+            target={'_blank'}
+            download
+            href='/Mehdi-Abdi_CV.pdf'
+            className='text-center flex flex-row items-center justify-center bg-[var(--color-primary)] min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl'
+          >
+            Download CV (PDF, 46 KB)
+          </a>
         </section>
         {/* skills */}
         <section className='hidden lg:block absolute right-0 w-[600px] top-0 bottom-0 my-[0xp]'>

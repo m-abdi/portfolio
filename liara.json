@@ -1,0 +1,5 @@
+{
+  "platform": "docker",
+  "app": "portfolio-nextjs",
+  "port": 3000
+}

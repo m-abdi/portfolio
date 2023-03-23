@@ -70,6 +70,7 @@ export default function Home() {
               height={410}
               className='object-contain rounded-[50%] w-[70vw] h-[70vw] sm:w-[410px] sm:h-[410px]'
               alt=''
+              loading='eager'
             />
             <span className='text-[70px] md:text-[120px] absolute right-0'>
               {'/>'}
@@ -148,6 +149,7 @@ export default function Home() {
                   alt={skill?.label}
                   title={skill?.label}
                   className='rounded-md object-contain shadow-md'
+                  loading='eager'
                 />
               ))}
           </section>
@@ -163,6 +165,7 @@ export default function Home() {
                   alt={skill?.label}
                   title={skill?.label}
                   className='rounded-md object-contain shadow-md'
+                  loading='eager'
                 />
               ))}
           </section>
@@ -178,6 +181,7 @@ export default function Home() {
                   alt={skill?.label}
                   title={skill?.label}
                   className='rounded-md object-contain shadow-md'
+                  loading='eager'
                 />
               ))}
           </section>
@@ -191,6 +195,7 @@ export default function Home() {
           height={300}
           alt='code block'
           className='hidden lg:block object-contain absolute left-3  p-4 rounded-md'
+          loading='eager'
         />
       </div>
       {/* articles */}

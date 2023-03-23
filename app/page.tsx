@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Script from 'next/script';
 import TypewriterEffect from './components/TypewriterEffect/TypewriterEffect';
 
 const skills = [
@@ -46,15 +45,6 @@ const code = `function main() {<br>
 export default function Home() {
   return (
     <main className='min-h-[100vh] flex flex-col gap-8'>
-      <Script>
-        {`<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "gd0iiosh3x");
-</script>`}
-      </Script>
       <div
         className='transition-[background-color] hover:bg-[whitesmoke] border-[1px] rounded-[50%] bg-[white] w-[80px] h-[80px] flex flex-col items-center justify-center shadow-xl border-solid sticky top-3 mx-auto z-10'
         style={{ transitionTimingFunction: 'ease-out' }}

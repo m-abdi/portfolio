@@ -2,12 +2,27 @@ import './globals.css';
 import './fonts.css';
 
 import Head from 'next/head';
-import Script from 'next/script';
+import localFont from 'next/font/local'
 
 export const metadata = {
   title: 'Mehdi Abdi | Software Engineer',
   description: 'Portfolio and blog',
 };
+
+const myFont = localFont({
+  src: [
+    {
+      path: '../public/fonts/Rubik/Rubik-VariableFont_wght.ttf',
+      style: 'noraml',
+    },
+    {
+      path: '../public/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf',
+      style: 'italic',
+    },
+  ],
+});
+
+
 
 export default function RootLayout({
   children,
@@ -38,7 +53,7 @@ export default function RootLayout({
 </script>`}
         </script>
       </Head>
-      <body>{children}</body>
+      <body className={`${myFont.className}`}>{children}</body>
     </html>
   );
 }

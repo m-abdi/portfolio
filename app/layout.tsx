@@ -2,7 +2,9 @@ import './globals.css';
 import './fonts.css';
 
 import Head from 'next/head';
-import localFont from 'next/font/local'
+import Image from 'next/image';
+import Link from 'next/link';
+import localFont from 'next/font/local';
 
 export const metadata = {
   title: 'Mehdi Abdi | Software Engineer',
@@ -21,8 +23,6 @@ const myFont = localFont({
     },
   ],
 });
-
-
 
 export default function RootLayout({
   children,
@@ -53,7 +53,26 @@ export default function RootLayout({
 </script>`}
         </script>
       </Head>
-      <body className={`${myFont.className}`}>{children}</body>
+      <body className={`${myFont.className}`}>
+        <header className='py-2 sticky top-1 z-50'>
+          <div
+            className='transition-[background-color] hover:bg-[whitesmoke] border-[1px] rounded-[50%] bg-[white] w-[80px] h-[80px] flex flex-col items-center justify-center shadow-xl border-solid sticky top-3 mx-auto z-10'
+            style={{ transitionTimingFunction: 'ease-out' }}
+          >
+            <Link href={'/'}>
+              <Image
+                src={'/images/M.svg'}
+                width={40}
+                height={40}
+                className='object-contain'
+                alt='Logo'
+                loading='eager'
+              />
+            </Link>
+          </div>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }

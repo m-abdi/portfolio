@@ -1,6 +1,9 @@
+import Button from './src/components/Atomic/Button';
 import Image from 'next/image';
-import TypewriterEffect from './components/TypewriterEffect/TypewriterEffect';
-
+import Link from 'next/link';
+import { PostType } from '@/types/data';
+import TypewriterEffect from './src/components/Atomic/TypewriterEffect';
+import banner from '../public/images/banner.jpg'
 const skills = [
   { label: 'django web framework', logo: '/images/django.svg', level: 1 },
   { label: 'html', logo: '/images/HTML5_logo.svg', level: 0 },
@@ -42,23 +45,18 @@ const code = `function main() {<br>
   }<br>
 }`;
 
-export default function Home() {
+export default async function Home() {
+  const posts = await fetch(
+    process.env.NEXT_PUBLIC_CMS_HOST + '/api/posts?sort[0]=id:desc&populate=*',
+    {
+      headers: { Authorization: `bearer ${process.env.CMS_API_TOKEN}` },
+    }
+  ).then((resp) => resp.json());
+
   return (
-    <main className='min-h-[100vh] flex flex-col gap-8'>
-      <div
-        className='transition-[background-color] hover:bg-[whitesmoke] border-[1px] rounded-[50%] bg-[white] w-[80px] h-[80px] flex flex-col items-center justify-center shadow-xl border-solid sticky top-3 mx-auto z-10'
-        style={{ transitionTimingFunction: 'ease-out' }}
-      >
-        <Image
-          src={'/images/M.svg'}
-          width={40}
-          height={40}
-          className='object-contain'
-          alt='Logo'
-        />
-      </div>
+    <main className='flex flex-col gap-8'>
       {/* hero text and image */}
-      <div className='flex-grow flex flex-col-reverse md:flex-row items-center justify-center gap-6 text-center py-0 px-[5%] relative'>
+      <div className='flex-grow flex flex-col-reverse md:flex-row items-center justify-center gap-6 text-center py-0 px-[5%] relative min-h-[96vh] '>
         <section className='flex flex-col items-center justify-center gap-4'>
           <div className='flex flex-row items-center relative px-5 md:px-20'>
             <span className='text-[70px] md:text-[120px] absolute left-0'>
@@ -131,13 +129,8 @@ export default function Home() {
             stable business environments. I offer honesty, fair pricing, and
             quality work.
           </p>
-          <a
-            target={'_blank'}
-            download
-            href='/Mehdi-Abdi_CV.pdf'
-            className='text-center flex flex-row items-center justify-center bg-[var(--color-primary)] min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl'
-          >
-            Download CV (PDF, 46 KB)
+          <a target={'_blank'} download href='/Mehdi-Abdi_CV.pdf'>
+            <Button>Download CV (PDF, 46 KB)</Button>
           </a>
         </section>
         {/* skills */}
@@ -195,21 +188,57 @@ export default function Home() {
         {/* <code className='absolute left-4 p-4 bg-slate-800 rounded-md text-white' dangerouslySetInnerHTML={{__html: code}}>
         </code> */}
         <Image
-          src={'/images/code.png'}
-          width={300}
-          height={300}
+          src={'/images/code.svg'}
+          width={330}
+          height={330}
           alt='code block'
-          className='hidden lg:block object-contain absolute left-3  p-4 rounded-md'
+          className='hidden lg:block object-contain absolute left-3 p-4 rounded-md md:w-[400px] md:h-[400px]'
           loading='eager'
         />
       </div>
       {/* articles */}
-      {/* <article className='bg-[var(--color-secondary)] min-h-[200px] text-[var(--light-text)] px-[5%]'>
-        <h2 className='text-[40px]'>Articles</h2>
-        <section>
-          <div className='shadow-2xl w-[280px] h-[310px] rounded-xl bg-[var(--card-background)]'></div>
+      <div className='min-h-[200px] px-[5%] flex flex-col gap-6 py-5 border-t-2'>
+        <section className='flex flex-row flex-wrap w-full justify-between gap-3 items-center'>
+          <h2 className='text-[40px]'>Articles</h2>
+          <Link href={'/articles'} className='text-xl text-[var(--color-primary)]' >Show all =></Link>
         </section>
-      </article> */}
+        <section className='flex flex-col sm:flex-row flex-wrap items-center gap-10 w-full justify-center'>
+          {posts.data.slice(0, 4).map((post: PostType) => (
+            <a
+              key={post.id}
+              href={`/posts/${post.attributes.slug}`}
+              target='_blank'
+              referrerPolicy='no-referrer'
+            >
+              <article className='shadow-2xl  w-[330px] h-[390px] rounded-xl text-[black] overflow-hidden relative bg-[var(--card-background)]'>
+                <Image
+                  src={
+                    process.env.NEXT_PUBLIC_CMS_HOST +
+                    post.attributes?.cover?.data?.attributes?.url
+                  }
+                  alt={
+                    post.attributes?.cover?.data?.attributes?.alternativeText ??
+                    "Mehdi Abdi's logo"
+                  }
+                  width={330}
+                  height={180}
+                  className='object-fill w-full h-[50%] relative left-0 rounded-t-xl'
+                />
+                <section className='flex flex-col px-3 py-1 gap-1'>
+                  <h3 className='font-bold text-xl'>{post.attributes.title}</h3>
+                  <h4>{post.attributes.subtitle}</h4>
+                  {/* <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.attributes.content.slice(0, 200),
+                  }}
+                ></div> */}
+                </section>
+              </article>
+            </a>
+          ))}
+        </section>
+      </div>
+      {/* <Image src={banner} alt='banner' className='object-contain w-full px-[4vw] opacity-50' /> */}
     </main>
   );
 }

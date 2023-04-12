@@ -28,7 +28,8 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # RUN yarn build
-
+ENV NEXT_PUBLIC_CMS_HOST=cms.mehdiabdi.info
+ENV CMS_API_TOKEN=74da519fe44fa01c80f35730bd25844b450a530040548e256e8fbdddcd3ba30308c40eb94068dddc822d3f9a7c1e5b6cb2c4774c68304d00e9b74982af0e6ecc5539471b7547d60d5f1e57aaad2eb67de222ad7fc12f8c6cf4276f5c3978c8e311f447b2cd968983cbdd2d3cd2870818ac7dd69ea3487f4eab31f59619938d44
 # If using npm comment out above and use below instead
 RUN npm run build
 

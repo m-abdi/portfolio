@@ -200,7 +200,7 @@ export default async function Home() {
       <div className='min-h-[200px] px-[5%] flex flex-col gap-6 py-5 border-t-2'>
         <section className='flex flex-row flex-wrap w-full justify-between gap-3 items-center'>
           <h2 className='text-[40px]'>Articles</h2>
-          <Link href={'/articles'} className='text-xl text-[var(--color-primary)]' >Show all =></Link>
+          <Link href={'/articles'} className='text-xl text-[var(--color-primary)]' >Show all</Link>
         </section>
         <section className='flex flex-col sm:flex-row flex-wrap items-center gap-10 w-full justify-center'>
           {posts.data.slice(0, 4).map((post: PostType) => (

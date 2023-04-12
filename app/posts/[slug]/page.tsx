@@ -4,10 +4,10 @@ import { PostType } from '@/types/data';
 export default async function Page({ params }: { params: { slug: string } }) {
   const postData = await fetch(
     process.env.NEXT_PUBLIC_CMS_HOST +
-      `/api/posts?filters[slug][$eq]=${params.slug}`,
+      `/api/posts?filters[slug][$eq]=${params.slug}&populate=*`,
     { headers: { Authorization: `bearer ${process.env.CMS_API_TOKEN}` } }
   ).then((resp) => resp.json());
-
+    
   return <Post data={postData.data[0]} />;
 }
 

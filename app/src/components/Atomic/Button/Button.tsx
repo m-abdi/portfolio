@@ -17,8 +17,9 @@ export default function Button({
 }) {
   return (
     <button
-      className={`text-center flex flex-row items-center justify-center bg-[${bgColor}] min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl`}
+      className={`text-center flex flex-row items-center justify-center min-w-fit min-h-fit h-[40px] w-[250px] rounded-3xl text-[var(--light-text)] text-[1.1rem] shadow-xl`}
       onClick={()=>handler?.()}
+      style={{backgroundColor: bgColor}}
     >
       {children}
     </button>

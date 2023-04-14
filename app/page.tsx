@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PostType } from '@/types/data';
 import TypewriterEffect from './src/components/Atomic/TypewriterEffect';
-import banner from '../public/images/banner.jpg'
+import banner from '../public/images/banner.jpg';
 const skills = [
   { label: 'django web framework', logo: '/images/django.svg', level: 1 },
   { label: 'html', logo: '/images/HTML5_logo.svg', level: 0 },
@@ -217,9 +217,12 @@ export default async function Home() {
             >
               <article className='shadow-2xl  w-[330px] h-[390px] rounded-xl text-[black] overflow-hidden relative bg-[var(--card-background)]'>
                 <Image
-                  src={post.attributes?.cover?.data?.attributes?.url.replace(
-                    'portfolio.storage.iran.liara.space', 'cdn.mehdiabdi.info'
-                  ) as string}
+                  src={
+                    post.attributes?.cover?.data?.attributes?.url.replace(
+                      'portfolio.storage.iran.liara.space',
+                      'cdn.mehdiabdi.info'
+                    ) as string
+                  }
                   alt={
                     post.attributes?.cover?.data?.attributes?.alternativeText ??
                     "Mehdi Abdi's logo"

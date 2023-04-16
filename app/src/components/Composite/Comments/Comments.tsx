@@ -6,6 +6,5 @@ interface CommentsData {
   content: string;
 }
 export default function Comments({ data }: { data: CommentsData[] }) {
-  const [first, setFirst] = useState('')
   return <div>Comments</div>;
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { PostType } from '@/types/data';
 import TypewriterEffect from './src/components/Atomic/TypewriterEffect';
 import banner from '../public/images/banner.jpg';
+import cmsClient from './src/data/CMS'
 const skills = [
   { label: 'django web framework', logo: '/images/django.svg', level: 1 },
   { label: 'html', logo: '/images/HTML5_logo.svg', level: 0 },
@@ -36,22 +37,10 @@ const skills = [
   },
 ];
 
-const code = `function main() {<br>
-     while (isAlive) {<br>
-    eat();<br>
-    learn();<br>
-    code();<br>
-    sleep();<br>
-  }<br>
-}`;
+
 
 export default async function Home() {
-  const posts = await fetch(
-    process.env.NEXT_PUBLIC_CMS_HOST + '/api/posts?sort[0]=id:desc&populate=*',
-    {
-      headers: { Authorization: `bearer ${process.env.CMS_API_TOKEN}` },
-    }
-  ).then((resp) => resp.json());
+  const posts = await cmsClient.getAllPosts()
 
   return (
     <main className='flex flex-col gap-8'>
@@ -218,9 +207,9 @@ export default async function Home() {
               <article className='shadow-2xl  w-[330px] h-[390px] rounded-xl text-[black] overflow-hidden relative bg-[var(--card-background)]'>
                 <Image
                   src={
-                    post.attributes?.cover?.data?.attributes?.url.replace(
-                      'portfolio.storage.iran.liara.space',
-                      'cdn.mehdiabdi.info'
+                    post.attributes?.cover?.data?.attributes?.url.replaceAll(
+                      'https://portfolio.storage.iran.liara.space',
+                      'https://cdn.mehdiabdi.info'
                     ) as string
                   }
                   alt={

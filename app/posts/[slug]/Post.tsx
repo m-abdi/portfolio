@@ -7,7 +7,7 @@ export default function Post({ data }: { data: PostType }) {
 
   return (
     <>
-      <article className='flex flex-col items-start justify-start gap-5 md:w-[70%] mx-auto p-4 px-6'>
+      <article className='flex flex-col items-start justify-start gap-5 md:w-[70%] mx-auto p-4 px-6 pb-24'>
         <h1 className='text-[40px] font-bold'>{data?.attributes?.title}</h1>
         <h2 className='text-[#6a6969] text-2xl'>
           {data?.attributes?.subtitle}
@@ -27,9 +27,9 @@ export default function Post({ data }: { data: PostType }) {
             __html: data?.attributes?.content.replaceAll(
               'portfolio.storage.iran.liara.space',
               'cdn.mehdiabdi.info'
-            ),
+            ).replaceAll('font-size', '').replaceAll('font-family', ''),
           }}
-          className='text-xl'
+          className='text-xl max-w-full'
         ></div>
       </article>
       {/* <Comments /> */}

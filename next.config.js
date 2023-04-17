@@ -12,6 +12,12 @@ const nextConfig = {
         port: '1337',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.mehdiabdi.info',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

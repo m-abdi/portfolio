@@ -91,3 +91,39 @@ select {
 }
 
 
+/* pre {
+  background-color: rgb(167, 167, 167);
+  border: 1px solid black;
+  overflow: auto;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+} */
+
+
+/* Define a monospace font and a light gray background color for the code element */
+code {
+  font-family: "Consolas", "Lucida Console", monospace;
+}
+
+/* Define a rounded border, padding and margin for the pre element */
+pre {
+  border: 2px solid #888;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px;
+  overflow: auto;
+  font-size: 16px;
+  background-color: #f1f1f1;
+}
+
+figure > img {
+  margin-inline: auto;
+}
+
+
+h2 {
+  font-size: 1.5rem;
+}
+
+

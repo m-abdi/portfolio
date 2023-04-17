@@ -28,7 +28,7 @@ class CMS {
   async getOnePost(slug: string) {
     return await fetch(
       process.env.NEXT_PUBLIC_CMS_HOST +
-        `/api/posts?filters[slug][$eq]=${slug}`,
+        `/api/posts?filters[slug][$eq]=${slug}&populate=*`,
       { headers: { Authorization: `bearer ${process.env.CMS_API_TOKEN}` } }
     ).then((resp) => resp.json());
   }

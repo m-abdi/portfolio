@@ -14,20 +14,25 @@ export default function Post({ data }: { data: PostType }) {
         </h2>
         {data?.attributes?.cover?.data?.attributes?.url && (
           <Image
-            src={data?.attributes?.cover?.data.attributes?.url}
+            src={data?.attributes?.cover?.data.attributes?.url.replace(
+              'portfolio.storage.iran.liara.space', 'cdn.mehdiabdi.info'
+            )}
             alt={data?.attributes?.cover?.data.attributes?.alternativeText}
-            width={300}
-            height={300}
+            width={600}
+            height={600}
             className='w-full object-contain'
           />
         )}
         <div
           aria-label='content'
           dangerouslySetInnerHTML={{
-            __html: data?.attributes?.content.replaceAll(
-              'portfolio.storage.iran.liara.space',
-              'cdn.mehdiabdi.info'
-            ).replaceAll('font-size', '').replaceAll('font-family', ''),
+            __html: data?.attributes?.content
+              .replaceAll(
+                'portfolio.storage.iran.liara.space',
+                'cdn.mehdiabdi.info'
+              )
+              .replaceAll('font-size', '')
+              .replaceAll('font-family', ''),
           }}
           className='text-xl max-w-full'
         ></div>

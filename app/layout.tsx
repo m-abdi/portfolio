@@ -4,6 +4,7 @@ import './fonts.css';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import localFont from 'next/font/local';
 
 export const metadata = {
@@ -31,28 +32,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <Head>
-        <script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=G-9RLJ6J75KN'
-        ></script>
-        <script>
-          {`window.dataLayer = window.dataLayer || [];
+      <Script
+        async
+        src='https://www.googletagmanager.com/gtag/js?id=G-9RLJ6J75KN'
+      ></Script>
+      <Script>
+        {`window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-9RLJ6J75KN');`}
-        </script>
-        <script>
-          {`<script type="text/javascript">
+      </Script>
+      <Script>
+        {`<script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "gd0iiosh3x");
 </script>`}
-        </script>
-      </Head>
+      </Script>
       <body className={`${myFont.className}`}>
         <header className='py-2 sticky top-1 z-50'>
           <div

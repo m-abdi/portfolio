@@ -45,15 +45,6 @@ export default function RootLayout({
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();`}
         </Script>
-      <Script>
-        {`<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "gd0iiosh3x");
-</script>`}
-      </Script>
       <body className={`${myFont.className}`}>
         <header className='py-2 sticky top-1 z-50'>
           <div

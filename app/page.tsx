@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { PostType } from '@/types/data';
 import TypewriterEffect from './src/components/Atomic/TypewriterEffect';
 import banner from '../public/images/banner.jpg';
-import cmsClient from './src/data/CMS'
 const skills = [
   { label: 'django web framework', logo: '/images/django.svg', level: 1 },
   { label: 'html', logo: '/images/HTML5_logo.svg', level: 0 },
@@ -40,12 +39,11 @@ const skills = [
 
 
 export default async function Home() {
-  const posts = await cmsClient.getAllPosts()
 
   return (
     <main className='flex flex-col gap-8'>
       {/* hero text and image */}
-      <div className='flex-grow flex flex-col-reverse md:flex-row items-center justify-center gap-6 text-center py-0 px-[5%] relative min-h-[96vh] '>
+      <div className='flex-grow flex flex-col-reverse md:flex-row items-center justify-center gap-6 text-center py-0 px-[5%] relative mt-14 '>
         <section className='flex flex-col items-center justify-center gap-4'>
           <div className='flex flex-row items-center relative px-5 md:px-20'>
             <span className='text-[70px] md:text-[120px] absolute left-0'>
@@ -68,7 +66,7 @@ export default async function Home() {
           </h1>
           <section className='text-[calc(1.3rem+3vw)] md:text-[50px] uppercase font-bold flex flex-row flex-wrap items-center gap-4 w-full text-center justify-center'>
             <TypewriterEffect className='text-[calc(1.1rem+2.8vw)] md:text-[40px] font-extrabold text-center'>
-              <h2>full-stack engineer</h2>
+              <h2>frontend engineer</h2>
             </TypewriterEffect>
           </section>
           {/* social links */}
@@ -118,9 +116,9 @@ export default async function Home() {
             stable business environments. I offer honesty, fair pricing, and
             quality work.
           </p>
-          <a target={'_blank'} download href='/Mehdi-Abdi_CV.pdf'>
+          {/* <a target={'_blank'} download href='/Mehdi-Abdi_CV.pdf'>
             <Button>Download CV (PDF, 46 KB)</Button>
-          </a>
+          </a> */}
         </section>
         {/* skills */}
         <section className='hidden lg:block absolute right-0 w-[600px] top-0 bottom-0 my-[0xp]'>
@@ -184,55 +182,6 @@ export default async function Home() {
           className='hidden lg:block object-contain absolute left-3 p-4 rounded-md md:w-[400px] md:h-[400px]'
           loading='eager'
         />
-      </div>
-      {/* articles */}
-      <div className='min-h-[200px] px-[5%] flex flex-col gap-6 py-5 border-t-2'>
-        <section className='flex flex-row flex-wrap w-full justify-between gap-3 items-center'>
-          <h2 className='text-[40px]'>Articles</h2>
-          <Link
-            href={'/articles'}
-            className='text-xl text-[var(--color-primary)]'
-          >
-            Show all
-          </Link>
-        </section>
-        <section className='flex flex-col sm:flex-row flex-wrap items-center gap-10 w-full justify-center'>
-          {posts.data.slice(0, 4).map((post: PostType) => (
-            <a
-              key={post.id}
-              href={`/posts/${post.attributes.slug}`}
-              target='_blank'
-              referrerPolicy='no-referrer'
-            >
-              <article className='shadow-2xl  w-[330px] h-[390px] rounded-xl text-[black] overflow-hidden relative bg-[var(--card-background)]'>
-                <Image
-                  src={
-                    post.attributes?.cover?.data?.attributes?.url.replaceAll(
-                      'https://portfolio.storage.iran.liara.space',
-                      'https://cdn.mehdiabdi.info'
-                    ) as string
-                  }
-                  alt={
-                    post.attributes?.cover?.data?.attributes?.alternativeText ??
-                    "Mehdi Abdi's logo"
-                  }
-                  width={330}
-                  height={180}
-                  className='object-fill w-full h-[50%] relative left-0 rounded-t-xl'
-                />
-                <section className='flex flex-col px-3 py-1 gap-1'>
-                  <h3 className='font-bold text-xl'>{post.attributes.title}</h3>
-                  <h4>{post.attributes.subtitle}</h4>
-                  {/* <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.attributes.content.slice(0, 200),
-                  }}
-                ></div> */}
-                </section>
-              </article>
-            </a>
-          ))}
-        </section>
       </div>
       {/* <Image src={banner} alt='banner' className='object-contain w-full px-[4vw] opacity-50' /> */}
     </main>

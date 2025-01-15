@@ -23,6 +23,7 @@ const myFont = localFont({
       style: 'italic',
     },
   ],
+  display: "swap"
 });
 
 export default function RootLayout({
